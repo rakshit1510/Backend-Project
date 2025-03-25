@@ -13,4 +13,7 @@ touch app.js constants.js index.js
  npm i -D prettier
 ```
 in script
-- "dev": "nodemon src/index.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+```
+ npm i express mongoose  dotenv
+```
