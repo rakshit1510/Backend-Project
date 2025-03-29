@@ -18,7 +18,7 @@ const userSchema=new mongoose.Schema(
             unique:true,
             trim:true,
         },
-        fullname:{
+        fullName:{
             type:String,
             required:true,
             trim:true,
@@ -59,7 +59,7 @@ It allows us to modify data, validate fields, or perform actions before saving, 
 */
 userSchema.pre("save",async function(next){
     if(!this.isModified("password"))return next();
-    this.password= bcrypt.hash(this.password,10)
+    this.password= await bcrypt.hash(this.password,10)
     next();
 })
 
@@ -67,7 +67,7 @@ userSchema.pre("save",async function(next){
 //  allows you to made your own middlewares
 
 userSchema.methods.isPasswordCorrect=async function(password){
-    return await bcrypt.compare(password,this.password)
+    return await bcrypt.compare(password,this.password)  //here "this" is the context of user using this function
 }
 
 userSchema.methods.generateAccessToken= function(){
