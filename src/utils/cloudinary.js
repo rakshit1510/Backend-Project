@@ -1,4 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary'
+import { response } from 'express';
 import fs from 'fs'
 
 
@@ -30,4 +31,21 @@ import fs from 'fs'
         }
     }
 
-    export {uploadOnCloudinary}
+    
+const deleteFromCloudinary = async (fileUrl) => {
+    try {
+        if (!fileUrl) return null;
+        
+        // Extract Public ID from the URL (assuming Cloudinary URL structure)
+        const publicId = fileUrl.split('/').pop().split('.')[0]; 
+        
+        // Delete the resource
+        const res = await cloudinary.api.delete_resources([publicId]); 
+        
+        return res;
+    } catch (error) {
+        console.error("Cloudinary Deletion Error:", error);
+        return null; // Returning null in case of failure
+    }
+}
+    export {uploadOnCloudinary,deleteFromCloudinary}
