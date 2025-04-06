@@ -52,8 +52,6 @@ const getVideoComments = asyncHandler(async (req, res, next) => {
     }
 });
 
-
-
 const addComment = asyncHandler(async (req, res) => {
     // TODO: add a comment to a video
     const {videoId}=req.params
