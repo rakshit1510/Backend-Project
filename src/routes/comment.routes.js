@@ -14,3 +14,4 @@ router.route('/c/:commentId').delete(deleteComment)
                                     .patch(updateComment)
 router.route('/:videoId').get(getVideoComments)
                                .post(addComment)
+                               export default router
