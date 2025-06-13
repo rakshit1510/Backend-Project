@@ -5,7 +5,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from "../models/user.model.js";
 import { Video } from "../models/video.model.js";
 import {Playlist} from '../models/playlist.model.js'
-import { app } from "../app";
+import { app } from "../app.js";
 
 
 const createPlaylist = asyncHandler(async (req, res) => {
