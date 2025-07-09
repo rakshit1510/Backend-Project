@@ -113,6 +113,7 @@ const loginUser= asyncHandler(async(req,res)=>{
         secure:true,
     }//this for refresh token to allow only server to to do manipulation with tokens and for browser it is only for view purpose
 
+    
     return res
               .status(200)
               .cookie("accessToken",accessToken,options)
@@ -125,7 +126,6 @@ const loginUser= asyncHandler(async(req,res)=>{
                     "User logged in Successfully"
                 )
               )
-
 
 })
 
